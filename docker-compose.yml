@@ -1,0 +1,16 @@
+# Uptime Kuma — deploy via Coolify or docker compose up -d
+# After first run: visit http://<VPS_IP>:3001, create admin account,
+# then run: python setup-monitors.py to auto-configure all monitors.
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - uptime-kuma-data:/app/data
+
+volumes:
+  uptime-kuma-data:

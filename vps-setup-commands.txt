@@ -1,0 +1,15 @@
+mkdir -p /opt/monitor
+cd /opt/monitor
+echo 'services:' > docker-compose.yml
+echo '  uptime-kuma:' >> docker-compose.yml
+echo '    image: louislam/uptime-kuma:1' >> docker-compose.yml
+echo '    container_name: uptime-kuma' >> docker-compose.yml
+echo '    restart: unless-stopped' >> docker-compose.yml
+echo '    ports:' >> docker-compose.yml
+echo '      - "3001:3001"' >> docker-compose.yml
+echo '    volumes:' >> docker-compose.yml
+echo '      - uptime-kuma-data:/app/data' >> docker-compose.yml
+echo 'volumes:' >> docker-compose.yml
+echo '  uptime-kuma-data:' >> docker-compose.yml
+cat docker-compose.yml
+docker compose up -d
